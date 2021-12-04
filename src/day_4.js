@@ -1,4 +1,5 @@
 // Honestly more complex than it needed to be...
+// I just kept coding and it just kept working...
 
 // ##################### Part 1 #####################
 
@@ -10,6 +11,15 @@ const pointArr = contentArr[0].split(",").map(x => parseInt(x))
 
 let boards = [];
 
+// Create array of matrices representing bingo (i.e. 3d matrice => boards[][][])
+//  list-v v-bingo-row
+// boards[][][]
+//            ^-bingo-col
+// each bingo-cell is an object:
+// {
+//     value: Int,
+//     checked: Bool (initially false)
+// }
 for (let i = 1; i < contentArr.length; i++) {
     let board = contentArr[i]
         .trim()
@@ -26,6 +36,9 @@ for (let i = 1; i < contentArr.length; i++) {
     boards.push(board)
 }
 
+// Checks a board for bingo, i.e. a row of cell.checked == true
+// or a whole column of cell.checked == true
+// Returns true if the matrix "has a bingo", false if not
 function checkBoard(bingoMatrix) {
     let bingo = false
     for (let i = 0; i < bingoMatrix.length; i++) {
@@ -41,6 +54,8 @@ function checkBoard(bingoMatrix) {
     return bingo
 }
 
+// returns the first board "containing a bingo" in the global boards array
+// otherwise returns null 
 function findFirstBingoBoard() {
     for (let i = 0; i < boards.length; i++) {
         let bingoFound = checkBoard(boards[i])
@@ -49,6 +64,8 @@ function findFirstBingoBoard() {
     return null
 }
 
+// Updates a bingo-boards with checked == true 
+// if it matches the value provided in the argument
 function updateBingoBoard(bingoMatrix, value) {
     for (let i = 0; i < bingoMatrix.length; i++) {
         for (let j = 0; j < bingoMatrix[i].length; j++) {
@@ -59,6 +76,8 @@ function updateBingoBoard(bingoMatrix, value) {
     }
 }
 
+// calculates the sum of all non-marked squares multiplied with
+// the last marked value
 function result(board, lastMarked) {
     let sum = 0
     for (let i = 0; i < board.length; i++) {
@@ -91,6 +110,9 @@ for (let i = 0; i < pointArr.length; i++) {
 // ##################### Part 2 #####################
 console.log("------------ PART 2 ------------");
 
+// finds the last winning bingo-board by removing winning bingo-boards
+// from the list until there is only one winning bingo board left which
+// it returns. If the last winning one hasn't been determined, it returns null
 function removeWinningBingoBoard() {
     for (let i = 0; i < boards.length; i++) {
         let bingoFound = checkBoard(boards[i])
