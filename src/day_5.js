@@ -2,7 +2,7 @@
 // ##################### Part 1 #####################
 
 const fs = require('fs')
-const content = fs.readFileSync(process.cwd() + "/" + "day_5_data.txt").toString()
+const content = fs.readFileSync(process.cwd() + "\\" + "day_5_data.txt").toString()
 
 /*
 Parse format: 
