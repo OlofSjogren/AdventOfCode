@@ -17,7 +17,6 @@ const checkTable = new Map([
     ['>', 25137]
 ])
 
-
 const corruptedClosing = []
 const nonCorruptedLines = []
 
@@ -29,10 +28,6 @@ contentArr.forEach(line => {
         if (opening.includes(char)) {
             stack.push(char)
         } else {
-            if (stack.length === 0) {
-                corruptedClosing.push(char)
-                break;
-            }
             const top = stack.pop()
             if (opening.indexOf(top) !== closing.indexOf(char)) {
                 corrupted = true
@@ -41,7 +36,7 @@ contentArr.forEach(line => {
             }
         }
     }
-    if (!corrupted) nonCorruptedLines.push(line)
+    if (!corrupted) nonCorruptedLines.push(stack)
 })
 
 const syntaxErrorScore = corruptedClosing.reduce((prev, char) => prev + checkTable.get(char), 0)
@@ -58,28 +53,14 @@ const autoCompleteTable = new Map([
     ['<', 4]
 ])
 
-const completionStrings = []
-nonCorruptedLines.forEach(line => {
-    const stack = []
-    for (let i = 0; i < line.length; i++) {
-        const char = line[i]
-        if (opening.includes(char)) {
-            stack.push(char)
-        } else {
-            stack.pop()
-        }
-    }
-    completionStrings.push(stack)
-})
-
-const middleScore = completionStrings
+const middleScore = nonCorruptedLines
     .map(line => line
         .reverse()
-        .reduce((prev, char) => 
-            (prev*5) + autoCompleteTable.get(char), 0))
-    .sort((a,b) => a - b)[Math.floor(completionStrings.length / 2)]
+        .reduce((prev, char) =>
+            (prev * 5) + autoCompleteTable.get(char), 0))
+    .sort((a, b) => a - b)[Math.floor(nonCorruptedLines.length / 2)]
 
 // Answer part 1
-console.log(middleScore);
+console.log({ middleScore });
 
 
