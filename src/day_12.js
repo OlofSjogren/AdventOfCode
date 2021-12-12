@@ -21,8 +21,6 @@ while (frontier.length !== 0) {
     if (on === "end") {
         paths.push(onPath)
     } else {
-        //const visited = nodes.get(on)
-        //nodes.set(on, visited + 1)
         const adjacent = findPaths(on)
         adjacent.forEach(node => {
             if (node !== "start" && (isUpperCase(node) || !onPath.includes(node))) {
@@ -32,10 +30,11 @@ while (frontier.length !== 0) {
     }
 }
 
+// Answer part 2
 console.log(`Answer Part 1 | Number of paths: ${paths.length}`);
 
 // ##################### Part 2 #####################
-// Not the most efficient way to do it... takes about 8 seconds to calculate on my machine
+// Not the most efficient way to do it... takes about 4 seconds to calculate on my machine
 
 const countSmallNodesVisitedTwice = path => {
     let smallNodes = path.filter(node => !isUpperCase(node))
@@ -52,12 +51,14 @@ while (frontierPartTwo.length !== 0) {
         pathsPartTwo.push(onPath)
     } else {
         const adjacent = findPaths(on)
+        const countedSmallNodes = countSmallNodesVisitedTwice(onPath)
         adjacent.forEach(node => {
-            if (node !== "start" && (isUpperCase(node) || countSmallNodesVisitedTwice(onPath) < 2)) {
+            if (node !== "start" && (isUpperCase(node) || countedSmallNodes < 2)) {
                 frontierPartTwo.push([...onPath, node])
             }
         })
     }
 }
 
+// Answer part 2
 console.log(`Answer Part 2 | Number of paths: ${pathsPartTwo.length}`);
