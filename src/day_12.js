@@ -41,14 +41,14 @@ const countSmallNodesVisitedTwice = path => {
     return smallNodes.length - (new Set(smallNodes)).size
 }
 
-let pathsPartTwo = []
+let pathsPartTwo = 0
 const frontierPartTwo = [[0, "start"]]
 
 while (frontierPartTwo.length !== 0) {
     const onPath = frontierPartTwo.pop()
     const on = onPath.at(-1)
     if (on === "end") {
-        pathsPartTwo.push(onPath)
+        pathsPartTwo++
     } else {
         const adjacent = findPaths(on)
         const countedSmallNodes = countSmallNodesVisitedTwice(onPath)
@@ -61,4 +61,4 @@ while (frontierPartTwo.length !== 0) {
 }
 
 // Answer part 2
-console.log(`Answer Part 2 | Number of paths: ${pathsPartTwo.length}`);
+console.log(`Answer Part 2 | Number of paths: ${pathsPartTwo}`);
