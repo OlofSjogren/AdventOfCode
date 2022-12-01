@@ -27,7 +27,7 @@
   | 7 | :heavy_check_mark: | :heavy_check_mark: | 
   | 8 | :heavy_check_mark: | :heavy_check_mark: | 
   | 9 | :heavy_check_mark: | :heavy_check_mark: | 
-  | 10 | :x: | :x: | 
+  | 10 | :heavy_check_mark: | :heavy_check_mark: | 
   | 11 | :heavy_check_mark: | :heavy_check_mark: | 
   | 12 | :heavy_check_mark: | :heavy_check_mark: | 
   | 13 | :heavy_check_mark: | :heavy_check_mark: | 
@@ -36,7 +36,7 @@
   | 16 | :heavy_check_mark: | :heavy_check_mark: | 
   | 17 | :heavy_check_mark: | :heavy_check_mark: | 
   | 18 | :heavy_check_mark: | :heavy_check_mark: | 
-  | 19 | :heavy_check_mark: | :heavy_check_mark: | 
+  | 19 | :x: | :x: | 
   | 20 | :heavy_check_mark: | :heavy_check_mark: | 
   | 21 | :heavy_check_mark: | :heavy_check_mark: | 
   | 22 | :heavy_check_mark: | :x: | 
