@@ -7,7 +7,6 @@ def move_stacks(stacks, numbered_instructions, all_at_once):
         move = stacks[from_stack][-amount:]
         if not all_at_once:
             move.reverse()
-        move.reverse()
         stacks[from_stack] = stacks[from_stack][:-amount]
         stacks[to_stack] = stacks[to_stack] + move
     return stacks
@@ -31,14 +30,14 @@ def run():
 
     # ----------- PART 1 ----------- #
     part_1_instructions = list(map(lambda s: map(int, re.findall(r"\d+", s)), instructions))
-    part_1_move = move_stacks(stacks_1, part_1_instructions, True)
+    part_1_move = move_stacks(stacks_1, part_1_instructions, False)
     final_string_1 = "".join([stack[-1] for _, stack in part_1_move.items()])
 
     display_result(1, final_string_1)
 
     # ----------- PART 2 ----------- #
     part_2_instructions = list(map(lambda s: map(int, re.findall(r"\d+", s)), instructions))
-    part_2_move = move_stacks(stacks_2, part_2_instructions, False)
+    part_2_move = move_stacks(stacks_2, part_2_instructions, True)
     final_string_2 = "".join([stack[-1] for _, stack in part_2_move.items()])
 
     display_result(2, final_string_2)
