@@ -40,8 +40,7 @@ def run():
     total_used_space = all_dirs["/"]
     amount_to_be_freed = 30_000_000 - (70_000_000 - total_used_space)
     dirs_with_enough_space = [x for x in all_dirs.values() if x >= amount_to_be_freed]
-    dirs_with_enough_space.sort()
-    smallest_size_with_enough_space = dirs_with_enough_space[0]
+    smallest_size_with_enough_space = min(dirs_with_enough_space)
 
     display_result(2, smallest_size_with_enough_space)
 
