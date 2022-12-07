@@ -4,7 +4,7 @@ from collections import defaultdict
 
 def scan_log(commands):
     all_dirs = defaultdict(lambda: 0)
-    current_dirs = ["/"]
+    current_dirs = []
 
     for line in commands:
         cmd = line.split(" ")
@@ -28,7 +28,7 @@ def scan_log(commands):
 
 def run():
     data = read_data(1, test=False)
-    commands = data.split("\n")[1:]
+    commands = data.split("\n")
 
     # ----------- PART 1 ----------- #
     all_dirs = scan_log(commands)
