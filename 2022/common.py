@@ -28,3 +28,10 @@ def display_result(part, result):
     print(res_str)
     print(border)
     return result
+
+
+def print_matrix(matrix):
+    for row in matrix:
+        for val in row:
+            print(val, end=" ")
+        print()
