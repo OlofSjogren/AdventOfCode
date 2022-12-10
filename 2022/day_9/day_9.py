@@ -44,7 +44,7 @@ def run():
         diff = directions[d]
         take_steps(body_2, diff, int(steps), visited_2)
 
-    visited_amount_2 = sum(visited_2.values())
+    visited_amount_2 = len(visited_2.values())
     display_result(1, visited_amount_2)
 
     # ----------- PART 2 ----------- #
@@ -55,7 +55,7 @@ def run():
         diff = directions[d]
         take_steps(body_10, diff, int(steps), visited_10)
 
-    visited_amount_10 = sum(visited_10.values())
+    visited_amount_10 = len(visited_10.values())
     display_result(2, visited_amount_10)
 
 
