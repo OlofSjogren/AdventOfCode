@@ -7,7 +7,7 @@ def read_data(part, test=False):
             raise Exception(f"Invalid part: {part}")
 
         caller_path = inspect.stack()[1].filename
-        data_end = f"_part_1_{'test_data' if test else 'data'}"
+        data_end = f"_part_{part}_{'test_data' if test else 'data'}"
         data_path = caller_path.replace(".py", data_end)
         file = open(data_path, "r")
         data = file.read()
@@ -35,3 +35,4 @@ def print_matrix(matrix):
         for val in row:
             print(val, end=" ")
         print()
+    print()
