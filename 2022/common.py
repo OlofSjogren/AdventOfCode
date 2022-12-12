@@ -1,4 +1,7 @@
 import inspect
+import time
+import functools
+import os
 
 
 def read_data(part, test=False):
@@ -36,3 +39,21 @@ def print_matrix(matrix):
             print(val, end=" ")
         print()
     print()
+
+
+def time_day(func):
+    caller_path = inspect.stack()[1].filename
+    day_number = os.path.basename(caller_path)
+
+    @functools.wraps(func)
+    def timer_wrapper():
+        start_time = time.time()
+        func()
+        end_time = time.time()
+        time_string = f"| Finished {day_number} in: {(end_time - start_time) * 1000 :.4f} ms |"
+        border_string = "-" * len(time_string)
+        print(border_string)
+        print(time_string)
+        print(border_string)
+
+    return timer_wrapper
