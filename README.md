@@ -2,6 +2,14 @@
 <details>
   <summary>
   
+  ### 2023: [![](https://img.shields.io/badge/Python-v3.11-blue?logo=python&style=flat)](#)
+  </summary>
+
+</details>
+
+<details>
+  <summary>
+  
   ### 2022: [![](https://img.shields.io/badge/Python-v3.11-blue?logo=python&style=flat)](#)
   </summary>
   
