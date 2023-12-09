@@ -43,7 +43,6 @@ def process_seed_range(args):
     seed_start, seed_range = seed_info
     print(f"START: Process for index {index} with seed range ({seed_start}, {seed_start + seed_range}) is starting")
 
-    # Start timing the process
     start_time = time.time()
 
     min_mapping = math.inf
@@ -58,7 +57,6 @@ def process_seed_range(args):
                 if seed < min_mapping:
                     min_mapping = seed
 
-    # Calculate and print the time taken
     end_time = time.time()
     time_taken = end_time - start_time
     minutes, seconds = divmod(time_taken, 60)
