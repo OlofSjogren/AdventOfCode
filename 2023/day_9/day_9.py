@@ -15,10 +15,10 @@ for history in lines:
 
     while not all_zeros:
         next_history = [b-a for a,b in zip(history[:-1], history[1:])]
-        history = next_history
         last_in_history.append(next_history[-1])
         first_in_history.append(next_history[0])
         all_zeros = next_history.count(0) == len(next_history)
+        history = next_history
 
     extrapolated_last = 0
     for val in last_in_history:
